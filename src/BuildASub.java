@@ -5,9 +5,18 @@ public class BuildASub {
     public static void main(String[] args) throws Exception {
         String bread = chooseBread();
         String meat = chooseMeat();
+        Boolean salad = addSalad ();
+
+        String saladChoice = "";
+
+        if(salad == true)
+        {
+            saladChoice = saladChoice();
+        }//end if
 
         System.out.println("Your chosen bread is: " + bread);
         System.out.println("Your chosen meat is: " + meat);
+        System.out.println("Your salad choices are: "  + saladChoice);
     }
 
 
@@ -60,4 +69,60 @@ public class BuildASub {
             throw new Exception("Meat not set!");
         }
     }
+
+    public static Boolean addSalad (){
+        Boolean subSalad = false;
+
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Do you want salad?:\n" +
+        "\t1. Yes\n" +
+        "\t2. No\n");
+        int saladChoice = scan.nextInt();
+        if(saladChoice == 1){
+            subSalad = true;
+        }
+        return subSalad;
+
+    }
+
+    public static String saladChoice(){
+        //Array holding salad options
+        String[] saladOptions = {"Lettuce", "Tomato", "Peppers"};
+        //Array holding customers choice
+        String[] saladChoice = new String[saladOptions.length];
+        //String to hold final order
+        String finalChoice = "";
+        //Scanner for user input
+        Scanner scan = new Scanner(System.in);
+        //counter to keep choice array correct
+        int saladCounter =0;
+
+        //for loop to loop through options and check if customer wants each part
+        for(int index =0; index < saladOptions.length; index++)
+        {
+            System.out.println("Would you like " + saladOptions[index]);
+            System.out.println("1. Yes" + "\n2. No");
+            int userChoice = scan.nextInt();
+
+            //if they want the item, add it to their choice
+            if(userChoice == 1)
+            {
+                saladChoice[saladCounter] =  saladOptions[index];
+                //increment saladCounter
+                saladCounter++;
+            }//end if
+        }//end for
+
+        //for loop putting choice into a single string
+        for(int index = 0; index < saladChoice.length; index++)
+        {
+            //if it's not null they will add the choice to string
+            if(saladChoice[index] != null)
+            {
+                finalChoice += saladChoice[index] + " ,";
+            }//end if
+        }//end for
+
+        return finalChoice;
+    }//end method saladChoice()
 }
