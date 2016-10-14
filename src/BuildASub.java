@@ -2,13 +2,15 @@ import java.util.Scanner;
 
 public class BuildASub {
 
-    public static void main(String[] args) throws Exception {
-        String bread = chooseBread();
-        String meat = chooseMeat();
+        public static void main(String[] args) throws Exception {
+            String bread = chooseBread();
+            String meat = chooseMeat();
+            String sauce = chooseSauce();
 
-        System.out.println("Your chosen bread is: " + bread);
-        System.out.println("Your chosen meat is: " + meat);
-    }
+            System.out.println("Your chosen bread is: " + bread);
+            System.out.println("Your chosen meat is: " + meat);
+            System.out.println("Your chosen sauce is:" + sauce);
+        }
 
 
     public static String chooseBread() {
@@ -44,20 +46,55 @@ public class BuildASub {
         int meatOption = scan.nextInt();
 
 
-
         switch (meatOption) {
-            case 1: meatType = "Ham";
+            case 1:
+                meatType = "Ham";
                 break;
-            case 2: meatType = "Bacon";
+            case 2:
+                meatType = "Bacon";
                 break;
-            case 3: meatType = "Goat";
+            case 3:
+                meatType = "Goat";
         }
 
         if (!meatType.isEmpty()) {
             return meatType;
-        }
-        else {
+        } else {
             throw new Exception("Meat not set!");
         }
     }
-}
+
+        public static String chooseSauce() {
+        String sauceType = "";
+        System.out.print("Would you like any sauce on your sub?");
+
+        Scanner scan = new Scanner(System.in);
+        String sauceOption = scan.nextLine();
+
+        if (sauceOption.equalsIgnoreCase("yes")) {
+            System.out.print("please type 1) for tomato \n 2) for mayo or \n 3) for sweet chilli");
+            sauceType = scan.nextLine();
+            switch (sauceType) {
+                case "1":
+                    sauceType = "Tomato";
+                    break;
+                case "2":
+                    sauceType = "mayo";
+                    break;
+                case "3":
+                    sauceType = "sweet chilli";
+
+            }
+        }
+        else if (sauceOption.equalsIgnoreCase("none")){
+                sauceType = "no sauce required";
+        }
+        else {
+            System.out.print("ERROR: please try again \n");
+                    chooseSauce();
+        }
+        return sauceType;
+
+        }
+    }
+
