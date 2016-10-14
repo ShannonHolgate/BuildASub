@@ -9,7 +9,7 @@ public class BuildASub {
 
             System.out.println("Your chosen bread is: " + bread);
             System.out.println("Your chosen meat is: " + meat);
-            System.out.println("Your chosen sauce is:" + sauce);
+
         }
 
 
