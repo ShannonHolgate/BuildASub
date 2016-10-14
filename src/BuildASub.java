@@ -5,13 +5,12 @@ public class BuildASub {
     public static void main(String[] args) throws Exception {
         String bread = chooseBread();
         String meat = chooseMeat();
-        String cheese = ChooseCheese();
-        Boolean toast = DoYouWantToasted();
+        String cheese = chooseCheese();
+        Boolean isToastRequired = doYouWantToasted();
 
         System.out.println("Your chosen bread is: " + bread);
         System.out.println("Your chosen meat is: " + meat);
-        System.out.println("Your chosen cheese is: " + cheese);
-        if(toast){
+        if(isToastRequired){
             System.out.println("Your sub will be toasted");
         }else{
             System.out.println("Cold bread for you");
@@ -69,40 +68,35 @@ public class BuildASub {
         }
     }
 
-    public static String ChooseCheese(){
-        String SelectedCheese = "";
-        System.out.println("What cheese do you want: \n 1. Regular \n 2. Peppered");
+    public static String chooseCheese(){
+        String selectedCheese = "";
+        System.out.println("What cheese do you want: \n 1. Regular \n 2. Peppered \n 3. No Cheese");
         Scanner scan = new Scanner(System.in);
-        int CheeseOption = scan.nextInt();
-        switch (CheeseOption){
+        int cheeseOption = scan.nextInt();
+        switch (cheeseOption){
             case 1:
-                SelectedCheese = "Regular";
-                        break;
+                selectedCheese = "Regular";
+                break;
             case 2:
-                SelectedCheese = "Peppered";
-                        break;
+                selectedCheese = "Peppered";
+                break;
             default:
-                SelectedCheese ="No Cheese";
-                        break;
+                selectedCheese ="No Cheese";
+                break;
         }
-        return SelectedCheese;
+        return selectedCheese;
     }
 
 
 
-    public static Boolean DoYouWantToasted(){
+    public static Boolean doYouWantToasted(){
         Boolean toast = false;
         System.out.println("Would you like your sub toasted? Y/N : ");
         Scanner scan = new Scanner(System.in);
-        String EnteredOption = scan.nextLine();
+        String enteredOption = scan.nextLine();
 
-        switch(EnteredOption){
-            case "y":
-                toast=true;
-                break;
-            case "Y":
-                toast=true;
-                break;
+        if(enteredOption.toUpperCase().equals("Y")){
+            toast=true;
         }
 
         return toast;
