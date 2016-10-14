@@ -5,18 +5,19 @@ public class BuildASub {
     public static void main(String[] args) throws Exception {
         String bread = chooseBread();
         String meat = chooseMeat();
-        Boolean salad = addSalad ();
 
+        //initalising the string which will hold the salad order.
         String saladChoice = "";
 
-        if(salad == true)
+        //Calling addSalad method to check if they user would like salad or not.
+        if(addSalad())
         {
+            //if yes, call the saladChoice method to build the customer's salad order.
             saladChoice = saladChoice();
         }//end if
 
         System.out.println("Your chosen bread is: " + bread);
         System.out.println("Your chosen meat is: " + meat);
-        System.out.println("Your salad choices are: "  + saladChoice);
     }
 
 
@@ -70,20 +71,30 @@ public class BuildASub {
         }
     }
 
-    public static Boolean addSalad (){
-        Boolean subSalad = false;
+    public static Boolean addSalad(){
+        //Boolean defaulted to false, so the default is that no salad is required
+        Boolean wouldLikeSalad = false;
 
+        //new scanner for user input
         Scanner scan = new Scanner(System.in);
+        //prompting customer for selecting if they would or not like a salad
         System.out.println("Do you want salad?:\n" +
-        "\t1. Yes\n" +
-        "\t2. No\n");
-        int saladChoice = scan.nextInt();
-        if(saladChoice == 1){
-            subSalad = true;
-        }
-        return subSalad;
+            "\t1. Y\n" +
+            "\t2. N\n");
 
-    }
+        //reading in customers choice
+        String saladChoice = scan.nextLine();
+
+        //checking if the customer has chosen they want salad
+        if (saladChoice.equalsIgnoreCase("Y")) {
+            //if yes update the boolean to true
+            wouldLikeSalad = true;
+        }//end if
+
+        //returning the customer's choice of wanting salad or not
+        return wouldLikeSalad;
+
+    }//end method addSalad()
 
     public static String saladChoice(){
         //Array holding salad options
@@ -95,18 +106,18 @@ public class BuildASub {
         //Scanner for user input
         Scanner scan = new Scanner(System.in);
         //counter to keep choice array correct
-        int saladCounter =0;
+        int saladCounter = 0;
+
 
         //for loop to loop through options and check if customer wants each part
         for(int index =0; index < saladOptions.length; index++)
         {
             System.out.println("Would you like " + saladOptions[index]);
-            System.out.println("1. Yes" + "\n2. No");
-            int userChoice = scan.nextInt();
+            System.out.println("1. Y" + "\n2. N");
+            String userChoice = scan.nextLine();
 
             //if they want the item, add it to their choice
-            if(userChoice == 1)
-            {
+            if (userChoice.equalsIgnoreCase("Y")) {
                 saladChoice[saladCounter] =  saladOptions[index];
                 //increment saladCounter
                 saladCounter++;
@@ -117,12 +128,12 @@ public class BuildASub {
         for(int index = 0; index < saladChoice.length; index++)
         {
             //if it's not null they will add the choice to string
-            if(saladChoice[index] != null)
-            {
+            if (saladChoice[index] != null) {
                 finalChoice += saladChoice[index] + " ,";
             }//end if
         }//end for
 
+        //returning the final salad order
         return finalChoice;
     }//end method saladChoice()
-}
+}//end class
