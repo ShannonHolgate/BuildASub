@@ -96,7 +96,7 @@ public class BuildASub {
         String enteredOption = scan.nextLine();
 
         if(enteredOption.toUpperCase().equals("Y")){
-            toast=true;
+            toast = true;
         }
 
         return toast;
