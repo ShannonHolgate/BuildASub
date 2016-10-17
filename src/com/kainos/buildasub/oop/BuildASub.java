@@ -133,15 +133,13 @@ public class BuildASub {
 
     }
 
-<<<<<<< HEAD:src/com/kainos/buildasub/oop/BuildASub.java
-    public static Boolean addSalad(){
-=======
     public static String chooseCheese() {
         String selectedCheese = "";
         System.out.println("What cheese do you want: \n 1. Regular \n 2. Peppered \n 3. No Cheese");
         Scanner scan = new Scanner(System.in);
-        int cheeseOption = scan.nextInt();
-        switch (cheeseOption) {
+        String cheeseOption = scan.nextLine();
+        int intCheeseOption = Integer.parseInt(cheeseOption);
+        switch (intCheeseOption) {
             case 1:
                 selectedCheese = "Regular";
                 break;
@@ -152,6 +150,7 @@ public class BuildASub {
                 selectedCheese = "No Cheese";
                 break;
         }
+
         return selectedCheese;
     }
 
@@ -170,7 +169,6 @@ public class BuildASub {
     }
 
     public static Boolean addSalad() {
->>>>>>> f4232580b26f75246ad35748999a0ff7aea3384f:src/BuildASub.java
         //Boolean defaulted to false, so the default is that no salad is required
         Boolean wouldLikeSalad = false;
 
