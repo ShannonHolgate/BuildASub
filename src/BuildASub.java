@@ -12,6 +12,8 @@ public class BuildASub {
         String saladChoice = "";
         Boolean isSaladAdded = addSalad();
 
+     Sub mysub = new Sub(chooseMeat(),chooseBread(), addSalad(), chooseCheese(), doYouWantToasted(), chooseSauce());
+
 
         //Calling addSalad method to check if they user would like salad or not.
 
