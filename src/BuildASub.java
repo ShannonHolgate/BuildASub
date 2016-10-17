@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class BuildASub {
 
+
+
     public static void main(String[] args) throws Exception {
         String bread = chooseBread();
         String meat = chooseMeat();
@@ -23,6 +25,8 @@ public class BuildASub {
 
         reciptPrint(bread, meat, cheese, isToastRequired, saladChoice, isSaladAdded, sauce);
 
+
+        Sub mySub = new Sub(chooseMeat(), chooseBread(), saladChoice(), chooseCheese(), isToastRequired(), chooseSauce());
 
     }
 
