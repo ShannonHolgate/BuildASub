@@ -1,7 +1,7 @@
 package com.kainos.buildasub.oop;
 
-import com.kainos.buildasub.oop.Sandwich;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class BuildASub {
@@ -56,26 +56,74 @@ public class BuildASub {
         }
     }
 
-    public static String chooseCheese(){
-        String selectedCheese = "";
-        System.out.println("What cheese do you want: \n 1. Regular \n 2. Peppered \n 3. No Cheese");
-        Scanner scan = new Scanner(System.in);
-        int cheeseOption = scan.nextInt();
-        switch (cheeseOption){
-            case 1:
-                selectedCheese = "Regular";
-                break;
-            case 2:
-                selectedCheese = "Peppered";
-                break;
-            default:
-                selectedCheese ="No Cheese";
-                break;
-        }
-        return selectedCheese;
+    public static List<String> ChooseCheese(){
+        List<String> SelectedCheese = new ArrayList<String>();
+        Boolean ContinueEnteringCheese = true;
+
+            System.out.println("Do you want cheese (Y/N)?");
+            Scanner scan = new Scanner(System.in);
+            String enteredOption = scan.nextLine();
+            if(enteredOption.toUpperCase().equals("Y")){
+                while(ContinueEnteringCheese){
+                    System.out.println("What cheese do you want: \n 1. Regular \n 2. Peppered \n 3. Exit Cheese Selection");
+                    Scanner CheeseScan = new Scanner(System.in);
+                    String cheeseOption = CheeseScan.nextLine();
+                    switch (cheeseOption){
+                        case "1":
+                            SelectedCheese.add("Regular");
+                            break;
+                        case "2":
+                            SelectedCheese.add("Peppered");
+                            break;
+                        default:
+                            SelectedCheese.add("No Cheese");
+                            ContinueEnteringCheese = false;
+                            break;
+                    }
+                }
+            }else{
+                return SelectedCheese;
+            }
+
+
+        return SelectedCheese;
     }
 
+    public static List<String> ChooseSalads(){
+        List<String> SelectedSalads = new ArrayList<String>();
+        Boolean ContinueEnteringSalad = true;
 
+        System.out.println("Do you want Salad (Y/N)?");
+        Scanner scan = new Scanner(System.in);
+        String enteredOption = scan.nextLine();
+        if(enteredOption.toUpperCase().equals("Y")){
+            while(ContinueEnteringSalad){
+                System.out.println("What salad do you want: \n 1. Lettuce \n 2. Tomato \n 3. Peppers \n 4. Exit Salad Selection");
+                Scanner CheeseScan = new Scanner(System.in);
+                String cheeseOption = CheeseScan.nextLine();
+                switch (cheeseOption){
+                    case "1":
+                        SelectedSalads.add("Lettuce");
+                        break;
+                    case "2":
+                        SelectedSalads.add("Tomato");
+                        break;
+                    case "3":
+                        SelectedSalads.add("Peppers");
+                        break;
+                    default:
+                        SelectedSalads.add("No Salad");
+                        ContinueEnteringSalad = false;
+                        break;
+                }
+            }
+        }else{
+            return SelectedSalads;
+        }
+
+
+        return SelectedSalads;
+    }
 
     public static Boolean doYouWantToasted(){
         Boolean toast = false;
@@ -93,6 +141,8 @@ public class BuildASub {
     //OOP
     public static void main(String[] args) throws Exception {
         Sandwich sandwich = new Sandwich();
+        sandwich.setCheese(ChooseCheese());
+        sandwich.setLettuce(ChooseSalads());
         sandwich.setBread(chooseBread());
         sandwich.setMeat(chooseMeat());
         sandwich.setToasted(doYouWantToasted());

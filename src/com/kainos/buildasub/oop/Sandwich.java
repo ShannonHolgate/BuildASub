@@ -11,7 +11,7 @@ public class Sandwich {
     private List<String> Lettuce;
 
     public Sandwich() {
-        System.out.println("com.kainos.buildasub.oop.Sandwich created");
+        System.out.println("Sandwich created");
     }
 
     @Override
