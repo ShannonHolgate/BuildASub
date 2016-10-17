@@ -1,3 +1,5 @@
+package com.kainos.buildasub.oop;
+
 import java.util.Scanner;
 
 public class BuildASub {
@@ -76,40 +78,6 @@ public class BuildASub {
         else {
             throw new Exception("Meat not set!");
         }
-    }
-
-    public static String chooseCheese(){
-        String selectedCheese = "";
-        System.out.println("What cheese do you want: \n 1. Regular \n 2. Peppered \n 3. No Cheese");
-        Scanner scan = new Scanner(System.in);
-        int cheeseOption = scan.nextInt();
-        switch (cheeseOption){
-            case 1:
-                selectedCheese = "Regular";
-                break;
-            case 2:
-                selectedCheese = "Peppered";
-                break;
-            default:
-                selectedCheese ="No Cheese";
-                break;
-        }
-        return selectedCheese;
-    }
-
-
-
-    public static Boolean doYouWantToasted(){
-        Boolean toast = false;
-        System.out.println("Would you like your sub toasted? Y/N : ");
-        Scanner scan = new Scanner(System.in);
-        String enteredOption = scan.nextLine();
-
-        if(enteredOption.toUpperCase().equals("Y")){
-            toast = true;
-        }
-
-        return toast;
     }
 
     public static String chooseCheese(){
