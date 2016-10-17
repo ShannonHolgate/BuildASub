@@ -10,23 +10,37 @@ public class BuildASub {
         String sauce = chooseSauce();
         //initalising the string which will hold the salad order.
         String saladChoice = "";
+        Boolean isSaladAdded = addSalad();
 
 
-        if (isToastRequired) {
+        //Calling addSalad method to check if they user would like salad or not.
+
+        if (isSaladAdded) {
+            //if yes, call the saladChoice method to build the customer's salad order.
+            saladChoice = saladChoice();
+
+        }//end if
+
+        reciptPrint(bread, meat, cheese, isToastRequired, saladChoice, isSaladAdded, sauce);
+
+
+    }
+
+
+    public static void reciptPrint(String pBread, String pMeat, String pCheese, boolean isItToasted, String pSaladChoice, boolean pAddSalad, String pSauce) {
+
+        if (isItToasted) {
             System.out.println("Your sub will be toasted");
         } else {
             System.out.println("Cold bread for you");
         }
-        //Calling addSalad method to check if they user would like salad or not.
-
-        if (addSalad()) {
-            //if yes, call the saladChoice method to build the customer's salad order.
-            saladChoice = saladChoice();
-            System.out.println("Salad choice: " + saladChoice);
-        }//end if
-        System.out.println("Your chosen bread is: " + bread);
-        System.out.println("Your chosen meat is: " + meat);
-        System.out.println("Your chosen sauce is " + sauce);
+        if (pAddSalad) {
+            System.out.println("Salad choice: " + pSaladChoice);
+        }
+        System.out.println("Your chosen bread is: " + pBread);
+        System.out.println("Your chosen meat is: " + pMeat);
+        System.out.println("Your chosen cheese is: " + pCheese);
+        System.out.println("Your chosen sauce is " + pSauce);
 
 
     }
