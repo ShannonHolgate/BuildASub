@@ -2,12 +2,12 @@ import java.util.Scanner;
 
 public class BuildASub {
 
-    public static void main(String[] args) throws Exception {
-        String bread = chooseBread();
-        String meat = chooseMeat();
+        public static void main(String[] args) throws Exception {
+            String bread = chooseBread();
+            String meat = chooseMeat();
         String cheese = chooseCheese();
         Boolean isToastRequired = doYouWantToasted();
-
+        String sauce = chooseSauce();
         //initalising the string which will hold the salad order.
         String saladChoice = "";
 
@@ -25,7 +25,7 @@ public class BuildASub {
         }else{
             System.out.println("Cold bread for you");
         }
-    }
+        }
 
 
     public static String chooseBread() {
@@ -61,56 +61,56 @@ public class BuildASub {
         int meatOption = scan.nextInt();
 
 
-
         switch (meatOption) {
-            case 1: meatType = "Ham";
+            case 1:
+                meatType = "Ham";
                 break;
-            case 2: meatType = "Bacon";
+            case 2:
+                meatType = "Bacon";
                 break;
-            case 3: meatType = "Goat";
+            case 3:
+                meatType = "Goat";
         }
 
         if (!meatType.isEmpty()) {
             return meatType;
-        }
-        else {
+        } else {
             throw new Exception("Meat not set!");
         }
     }
 
-    public static String chooseCheese(){
-        String selectedCheese = "";
-        System.out.println("What cheese do you want: \n 1. Regular \n 2. Peppered \n 3. No Cheese");
+        public static String chooseSauce() {
+        String sauceType = "";
+        System.out.print("Would you like any sauce on your sub?");
+
         Scanner scan = new Scanner(System.in);
-        int cheeseOption = scan.nextInt();
-        switch (cheeseOption){
-            case 1:
-                selectedCheese = "Regular";
-                break;
-            case 2:
-                selectedCheese = "Peppered";
-                break;
-            default:
-                selectedCheese ="No Cheese";
-                break;
+        String sauceOption = scan.nextLine();
+
+        if (sauceOption.equalsIgnoreCase("yes")) {
+            System.out.print("please type 1) for tomato \n 2) for mayo or \n 3) for sweet chilli");
+            sauceType = scan.nextLine();
+            switch (sauceType) {
+                case "1":
+                    sauceType = "Tomato";
+                    break;
+                case "2":
+                    sauceType = "mayo";
+                    break;
+                case "3":
+                    sauceType = "sweet chilli";
+
+            }
         }
-        return selectedCheese;
-    }
-
-
-
-    public static Boolean doYouWantToasted(){
-        Boolean toast = false;
-        System.out.println("Would you like your sub toasted? Y/N : ");
-        Scanner scan = new Scanner(System.in);
-        String enteredOption = scan.nextLine();
-
-        if(enteredOption.toUpperCase().equals("Y")){
-            toast = true;
+        else if (sauceOption.equalsIgnoreCase("none")){
+                sauceType = "no sauce required";
         }
+        else {
+            System.out.print("ERROR: please try again \n");
+                    chooseSauce();
+        }
+        return sauceType;
 
-        return toast;
-    }
+        }
 
     public static String chooseCheese(){
         String selectedCheese = "";
