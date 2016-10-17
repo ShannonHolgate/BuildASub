@@ -2,30 +2,34 @@ import java.util.Scanner;
 
 public class BuildASub {
 
-        public static void main(String[] args) throws Exception {
-            String bread = chooseBread();
-            String meat = chooseMeat();
+    public static void main(String[] args) throws Exception {
+        String bread = chooseBread();
+        String meat = chooseMeat();
         String cheese = chooseCheese();
         Boolean isToastRequired = doYouWantToasted();
         String sauce = chooseSauce();
         //initalising the string which will hold the salad order.
         String saladChoice = "";
 
-        //Calling addSalad method to check if they user would like salad or not.
-        if(addSalad())
-        {
-            //if yes, call the saladChoice method to build the customer's salad order.
-            saladChoice = saladChoice();
-        }//end if
 
-        System.out.println("Your chosen bread is: " + bread);
-        System.out.println("Your chosen meat is: " + meat);
-        if(isToastRequired){
+        if (isToastRequired) {
             System.out.println("Your sub will be toasted");
-        }else{
+        } else {
             System.out.println("Cold bread for you");
         }
-        }
+        //Calling addSalad method to check if they user would like salad or not.
+
+        if (addSalad()) {
+            //if yes, call the saladChoice method to build the customer's salad order.
+            saladChoice = saladChoice();
+            System.out.println("Salad choice: " + saladChoice);
+        }//end if
+        System.out.println("Your chosen bread is: " + bread);
+        System.out.println("Your chosen meat is: " + meat);
+        System.out.println("Your chosen sauce is " + sauce);
+
+
+    }
 
 
     public static String chooseBread() {
@@ -38,18 +42,19 @@ public class BuildASub {
         int breadOption = scan.nextInt();
 
 
-
         switch (breadOption) {
-            case 1: breadType = "Flour";
+            case 1:
+                breadType = "Flour";
                 break;
-            case 2: breadType = "Wholemeal";
+            case 2:
+                breadType = "Wholemeal";
                 break;
-            default: breadType = "Flour";
+            default:
+                breadType = "Flour";
         }
 
         return breadType;
     }
-
 
 
     public static String chooseMeat() throws Exception {
@@ -81,7 +86,7 @@ public class BuildASub {
         }
     }
 
-        public static String chooseSauce() {
+    public static String chooseSauce() {
         String sauceType = "";
         System.out.print("Would you like any sauce on your sub?");
 
@@ -102,24 +107,22 @@ public class BuildASub {
                     sauceType = "sweet chilli";
 
             }
-        }
-        else if (sauceOption.equalsIgnoreCase("none")){
-                sauceType = "no sauce required";
-        }
-        else {
+        } else if (sauceOption.equalsIgnoreCase("none")) {
+            sauceType = "no sauce required";
+        } else {
             System.out.print("ERROR: please try again \n");
-                    chooseSauce();
+            chooseSauce();
         }
         return sauceType;
 
-        }
+    }
 
-    public static String chooseCheese(){
+    public static String chooseCheese() {
         String selectedCheese = "";
         System.out.println("What cheese do you want: \n 1. Regular \n 2. Peppered \n 3. No Cheese");
         Scanner scan = new Scanner(System.in);
         int cheeseOption = scan.nextInt();
-        switch (cheeseOption){
+        switch (cheeseOption) {
             case 1:
                 selectedCheese = "Regular";
                 break;
@@ -127,28 +130,27 @@ public class BuildASub {
                 selectedCheese = "Peppered";
                 break;
             default:
-                selectedCheese ="No Cheese";
+                selectedCheese = "No Cheese";
                 break;
         }
         return selectedCheese;
     }
 
 
-
-    public static Boolean doYouWantToasted(){
+    public static Boolean doYouWantToasted() {
         Boolean toast = false;
         System.out.println("Would you like your sub toasted? Y/N : ");
         Scanner scan = new Scanner(System.in);
         String enteredOption = scan.nextLine();
 
-        if(enteredOption.toUpperCase().equals("Y")){
+        if (enteredOption.toUpperCase().equals("Y")) {
             toast = true;
         }
 
         return toast;
     }
 
-    public static Boolean addSalad(){
+    public static Boolean addSalad() {
         //Boolean defaulted to false, so the default is that no salad is required
         Boolean wouldLikeSalad = false;
 
@@ -156,8 +158,8 @@ public class BuildASub {
         Scanner scan = new Scanner(System.in);
         //prompting customer for selecting if they would or not like a salad
         System.out.println("Do you want salad?:\n" +
-            "\t1. Y\n" +
-            "\t2. N\n");
+                "\t1. Y\n" +
+                "\t2. N\n");
 
         //reading in customers choice
         String saladChoice = scan.nextLine();
@@ -173,7 +175,7 @@ public class BuildASub {
 
     }//end method addSalad()
 
-    public static String saladChoice(){
+    public static String saladChoice() {
         //Array holding salad options
         String[] saladOptions = {"Lettuce", "Tomato", "Peppers"};
         //Array holding customers choice
@@ -187,23 +189,21 @@ public class BuildASub {
 
 
         //for loop to loop through options and check if customer wants each part
-        for(int index =0; index < saladOptions.length; index++)
-        {
+        for (int index = 0; index < saladOptions.length; index++) {
             System.out.println("Would you like " + saladOptions[index]);
             System.out.println("1. Y" + "\n2. N");
             String userChoice = scan.nextLine();
 
             //if they want the item, add it to their choice
             if (userChoice.equalsIgnoreCase("Y")) {
-                saladChoice[saladCounter] =  saladOptions[index];
+                saladChoice[saladCounter] = saladOptions[index];
                 //increment saladCounter
                 saladCounter++;
             }//end if
         }//end for
 
         //for loop putting choice into a single string
-        for(int index = 0; index < saladChoice.length; index++)
-        {
+        for (int index = 0; index < saladChoice.length; index++) {
             //if it's not null they will add the choice to string
             if (saladChoice[index] != null) {
                 finalChoice += saladChoice[index] + " ,";
