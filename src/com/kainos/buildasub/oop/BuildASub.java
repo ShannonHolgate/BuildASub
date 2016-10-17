@@ -1,3 +1,5 @@
+package com.kainos.buildasub.oop;
+
 import java.util.Scanner;
 
 public class BuildASub {
@@ -135,8 +137,9 @@ public class BuildASub {
         String selectedCheese = "";
         System.out.println("What cheese do you want: \n 1. Regular \n 2. Peppered \n 3. No Cheese");
         Scanner scan = new Scanner(System.in);
-        int cheeseOption = scan.nextInt();
-        switch (cheeseOption) {
+        String cheeseOption = scan.nextLine();
+        int intCheeseOption = Integer.parseInt(cheeseOption);
+        switch (intCheeseOption) {
             case 1:
                 selectedCheese = "Regular";
                 break;
@@ -147,6 +150,7 @@ public class BuildASub {
                 selectedCheese = "No Cheese";
                 break;
         }
+
         return selectedCheese;
     }
 
