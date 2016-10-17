@@ -1,22 +1,10 @@
+package com.kainos.buildasub.oop;
+
+import com.kainos.buildasub.oop.Sandwich;
+
 import java.util.Scanner;
 
 public class BuildASub {
-
-    public static void main(String[] args) throws Exception {
-        String bread = chooseBread();
-        String meat = chooseMeat();
-        String cheese = chooseCheese();
-        Boolean isToastRequired = doYouWantToasted();
-
-        System.out.println("Your chosen bread is: " + bread);
-        System.out.println("Your chosen meat is: " + meat);
-        if(isToastRequired){
-            System.out.println("Your sub will be toasted");
-        }else{
-            System.out.println("Cold bread for you");
-        }
-    }
-
 
     public static String chooseBread() {
         String breadType;
@@ -101,4 +89,14 @@ public class BuildASub {
 
         return toast;
     }
+
+    //OOP
+    public static void main(String[] args) throws Exception {
+        Sandwich sandwich = new Sandwich();
+        sandwich.setBread(chooseBread());
+        sandwich.setMeat(chooseMeat());
+        sandwich.setToasted(doYouWantToasted());
+        System.out.println(sandwich.toString());
+    }
+
 }
